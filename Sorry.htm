@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stylized Sorries with Love Messages</title>
+    <style>
+        body {
+            background-color:rgb(189, 189, 248); /* Lavender background */
+        }
+        #sorry-container {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Times New Roman', serif;
+            font-size: 14pt;
+            font-weight: bold;
+            color: black; /* Color of the text */
+            padding: 50px; /* Padding around the text */
+        }
+        .love-message {
+            color: red; /* Color for love messages */
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div id="sorry-container"></div>
+
+    <script>
+        var container = document.getElementById('sorry-container');
+        var count = 0;
+        var maxCount = 1000;
+        var interval = 150; // Time in milliseconds between each "Sorry"
+        var loveMessages = [
+            ", You mean the world to me ❤️",
+            ", Together forever, never apart 💑",
+            ", You're my sunshine on a cloudy day ☀️",
+            ", I love you more than coffee ☕",
+            ", You're the peanut butter to my jelly 🥜🍇"
+        ];
+
+        function typeSorry() {
+            if (count < maxCount) {
+                if (Math.random() < 0.1 && count > 0) { // Randomly insert a love message
+                    var message = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+                    var messageElement = document.createElement("div");
+                    messageElement.textContent = message;
+                    messageElement.className = "love-message";
+                    container.appendChild(messageElement);
+                }
+
+                container.textContent += (count > 0 ? ", " : "") + "Sorry";
+                count++;
+                setTimeout(typeSorry, interval);
+            }
+        }
+
+        typeSorry(); // Start typing
+    </script>
+</body>
+</html>

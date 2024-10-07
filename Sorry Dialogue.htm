@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forgiveness Dialog</title>
+    <style>
+        body {
+        background-color:rgb(189, 189, 248); /* Lavender background */
+        }
+        .dialog-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Times New Roman', serif;
+            font-size: 30pt;
+            font-weight: bold;
+            border: 10px solid black;
+            padding: 100px;
+            text-align: center;
+        }
+        .yes-button:hover {
+            background-color: green;
+        }
+        .no-button:hover {
+            background-color: red;
+        }
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="dialog-box" id="dialog">
+        <p id="dialog-text">Would you forgive me?</p>
+        <div class="gif-container" id="gif-container"></div>
+        <button class="yes-button" onclick="handleYes()">Yes! </button>
+        <button class="no-button" onclick="handleNo()">No</button>
+    </div>
+
+    <script>
+        var noCount = 0;
+
+        function handleYes() {
+            var dialog = document.getElementById("dialog");
+    var dialogText = document.getElementById("dialog-text");
+    var gifContainer = document.getElementById('gif-container');
+
+    dialogText.innerHTML = "Wait ONE GOD DARN sec";
+
+    // Remove buttons
+    dialog.removeChild(document.querySelector('.yes-button'));
+    dialog.removeChild(document.querySelector('.no-button'));
+
+    // Clear the GIF container
+    gifContainer.innerHTML = '';
+
+            // Change dialog box to a big red heart after a short delay
+            setTimeout(function() {
+                dialogText.innerHTML = '';
+                var img = document.createElement('img');
+                img.src = 'https://media1.tenor.com/m/IAP6odUutZMAAAAC/kiss.gif'; // Replace with your GIF URL
+                img.classList.add('gif');
+                dialog.appendChild(img);
+                dialogText.innerHTML = "Hooray, thank you Saramme &lt;3";
+            }, 1000); // 1 second delay
+        }
+
+        function handleNo() {
+            var messages = [
+            "Really? Please reconsider Vave!",
+            "Oh no, not again! Give me a chance? pleaseee",
+            "Are you sure? I can improve Ponnuse!",
+            "This can't be true! Say you forgive me! Eliza",
+            "Last chance! I know you have a big heart! Muthe",
+            ""
+            ];
+
+
+            var gifUrls = [
+            'https://media1.tenor.com/m/8vIu6wNjkM0AAAAC/please-anime.gif',
+            'https://img2.joyreactor.com/pics/post/picture-1711411.gif',
+            'https://i.pinimg.com/originals/35/b6/5b/35b65b5121ff2d1531d23c295d0ae402.gif',
+            'https://plyasm.files.wordpress.com/2018/01/chuunibyou-beg.gif',
+            'https://gifdb.com/images/high/miss-kobayashi-kanna-kamui-anime-girl-crying-4njt5cp77q06fwoc.gif',
+            ];
+
+            noCount++;
+            var gifContainer = document.getElementById('gif-container');
+
+            if (noCount < messages.length) {
+                document.getElementById("dialog-text").innerHTML = messages[noCount - 1];
+                
+                var img = document.createElement('img');
+                img.src = gifUrls[noCount - 1]; 
+                img.classList.add('gif');
+                
+                gifContainer.innerHTML = ''; // Clear existing content
+                gifContainer.appendChild(img);
+
+            } else {
+                document.getElementById("dialog-text").innerHTML = "Fine, we part here 😢";
+                gifContainer.innerHTML = '<img src="https://gifdb.com/images/high/nagi-no-asukara-akari-anime-crying-tk7cp4n28py779xu.gif" class="gif">';
+
+                // Remove buttons
+                var buttons = document.querySelectorAll('.yes-button, .no-button');
+                buttons.forEach(function(button) {
+                    button.style.display = 'none';
+                });
+            }
+        }
+    </script>
+</body>
+</html>
