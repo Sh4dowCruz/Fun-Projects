@@ -18,7 +18,7 @@ for i in range(0, time):
         peryear = peryear + 600
         print("New principal after", i+1, "year is", principal)
         
-
+expenditure = 0
 print("In indian money: ", amount*85)
 print("Total amount put in is", iprincipal)
 
